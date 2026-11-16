@@ -208,12 +208,13 @@ function Attendance() {
           theory: sample.theory,
           industrialViva: sample.industrialViva,
           technicalViva: sample.technicalViva,
+          project: undefined as number | undefined,
           total: academicTopicTotal(
             sample.practical,
             sample.theory,
             sample.industrialViva,
             sample.technicalViva,
-            sample.project,
+            undefined,
           ),
         })),
         ...savedTopics.map((topic) => ({
