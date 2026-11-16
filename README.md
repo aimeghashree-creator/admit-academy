@@ -1,4 +1,4 @@
-# Welcome to your Lovable project
+# Admit Academy
 
 This project was built with [Lovable](https://lovable.dev).
 
