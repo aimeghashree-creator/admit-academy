@@ -26,7 +26,6 @@ export async function recognizeScannedPages(
     worker = await Tesseract.createWorker("eng", Tesseract.OEM.LSTM_ONLY, {
       workerPath: tesseractWorkerUrl,
       corePath: tesseractCoreUrl,
-      langPath: new URL(`${import.meta.env.BASE_URL}tesseract/`, window.location.origin).href,
       gzip: true,
       logger: (message) => {
         if (message.status === "recognizing text") {

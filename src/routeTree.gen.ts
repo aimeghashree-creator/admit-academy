@@ -64,6 +64,16 @@ import { Route as DirectorsProfileRouteImport } from './routes/directors.profile
 import { Route as DirectorsReportsRouteImport } from './routes/directors.reports'
 import { Route as DirectorsSettingsRouteImport } from './routes/directors.settings'
 import { Route as DirectorsTasksRouteImport } from './routes/directors.tasks'
+import { Route as FinanceIndexRouteImport } from './routes/finance.index'
+import { Route as FinanceAllocationRouteImport } from './routes/finance.allocation'
+import { Route as FinanceBudgetsRouteImport } from './routes/finance.budgets'
+import { Route as FinanceFeesRouteImport } from './routes/finance.fees'
+import { Route as FinanceLedgersRouteImport } from './routes/finance.ledgers'
+import { Route as FinancePettyCashRouteImport } from './routes/finance.petty-cash'
+import { Route as FinanceReportsRouteImport } from './routes/finance.reports'
+import { Route as FinanceSettingsRouteImport } from './routes/finance.settings'
+import { Route as FinanceSettlementsRouteImport } from './routes/finance.settlements'
+import { Route as FinanceTransactionsRouteImport } from './routes/finance.transactions'
 import { Route as AcademicNotesIndexRouteImport } from './routes/academic.notes.index'
 import { Route as AcademicNotesModuleIdRouteImport } from './routes/academic.notes.$moduleId'
 import { Route as AdmissionAgentsIndexRouteImport } from './routes/admission.agents.index'
@@ -354,6 +364,56 @@ const DirectorsTasksRoute = DirectorsTasksRouteImport.update({
   path: '/tasks',
   getParentRoute: () => DirectorsRoute,
 } as any)
+const FinanceIndexRoute = FinanceIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => FinanceRoute,
+} as any)
+const FinanceAllocationRoute = FinanceAllocationRouteImport.update({
+  id: '/allocation',
+  path: '/allocation',
+  getParentRoute: () => FinanceRoute,
+} as any)
+const FinanceBudgetsRoute = FinanceBudgetsRouteImport.update({
+  id: '/budgets',
+  path: '/budgets',
+  getParentRoute: () => FinanceRoute,
+} as any)
+const FinanceFeesRoute = FinanceFeesRouteImport.update({
+  id: '/fees',
+  path: '/fees',
+  getParentRoute: () => FinanceRoute,
+} as any)
+const FinanceLedgersRoute = FinanceLedgersRouteImport.update({
+  id: '/ledgers',
+  path: '/ledgers',
+  getParentRoute: () => FinanceRoute,
+} as any)
+const FinancePettyCashRoute = FinancePettyCashRouteImport.update({
+  id: '/petty-cash',
+  path: '/petty-cash',
+  getParentRoute: () => FinanceRoute,
+} as any)
+const FinanceReportsRoute = FinanceReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => FinanceRoute,
+} as any)
+const FinanceSettingsRoute = FinanceSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => FinanceRoute,
+} as any)
+const FinanceSettlementsRoute = FinanceSettlementsRouteImport.update({
+  id: '/settlements',
+  path: '/settlements',
+  getParentRoute: () => FinanceRoute,
+} as any)
+const FinanceTransactionsRoute = FinanceTransactionsRouteImport.update({
+  id: '/transactions',
+  path: '/transactions',
+  getParentRoute: () => FinanceRoute,
+} as any)
 const AcademicNotesIndexRoute = AcademicNotesIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -432,7 +492,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRouteWithChildren
   '/admission': typeof AdmissionRouteWithChildren
   '/directors': typeof DirectorsRouteWithChildren
-  '/finance': typeof FinanceRoute
+  '/finance': typeof FinanceRouteWithChildren
   '/hr': typeof HrRoute
   '/marketing': typeof MarketingRoute
   '/settings': typeof SettingsRoute
@@ -478,10 +538,20 @@ export interface FileRoutesByFullPath {
   '/directors/reports': typeof DirectorsReportsRoute
   '/directors/settings': typeof DirectorsSettingsRoute
   '/directors/tasks': typeof DirectorsTasksRoute
+  '/finance/allocation': typeof FinanceAllocationRoute
+  '/finance/budgets': typeof FinanceBudgetsRoute
+  '/finance/fees': typeof FinanceFeesRoute
+  '/finance/ledgers': typeof FinanceLedgersRoute
+  '/finance/petty-cash': typeof FinancePettyCashRoute
+  '/finance/reports': typeof FinanceReportsRoute
+  '/finance/settings': typeof FinanceSettingsRoute
+  '/finance/settlements': typeof FinanceSettlementsRoute
+  '/finance/transactions': typeof FinanceTransactionsRoute
   '/academic/': typeof AcademicIndexRoute
   '/admin/': typeof AdminIndexRoute
   '/admission/': typeof AdmissionIndexRoute
   '/directors/': typeof DirectorsIndexRoute
+  '/finance/': typeof FinanceIndexRoute
   '/academic/notes/$moduleId': typeof AcademicNotesModuleIdRoute
   '/admission/agents/$id': typeof AdmissionAgentsIdRoute
   '/admission/applications/$id': typeof AdmissionApplicationsIdRoute
@@ -498,7 +568,6 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/finance': typeof FinanceRoute
   '/hr': typeof HrRoute
   '/marketing': typeof MarketingRoute
   '/settings': typeof SettingsRoute
@@ -541,10 +610,20 @@ export interface FileRoutesByTo {
   '/directors/reports': typeof DirectorsReportsRoute
   '/directors/settings': typeof DirectorsSettingsRoute
   '/directors/tasks': typeof DirectorsTasksRoute
+  '/finance/allocation': typeof FinanceAllocationRoute
+  '/finance/budgets': typeof FinanceBudgetsRoute
+  '/finance/fees': typeof FinanceFeesRoute
+  '/finance/ledgers': typeof FinanceLedgersRoute
+  '/finance/petty-cash': typeof FinancePettyCashRoute
+  '/finance/reports': typeof FinanceReportsRoute
+  '/finance/settings': typeof FinanceSettingsRoute
+  '/finance/settlements': typeof FinanceSettlementsRoute
+  '/finance/transactions': typeof FinanceTransactionsRoute
   '/academic': typeof AcademicIndexRoute
   '/admin': typeof AdminIndexRoute
   '/admission': typeof AdmissionIndexRoute
   '/directors': typeof DirectorsIndexRoute
+  '/finance': typeof FinanceIndexRoute
   '/academic/notes/$moduleId': typeof AcademicNotesModuleIdRoute
   '/admission/agents/$id': typeof AdmissionAgentsIdRoute
   '/admission/applications/$id': typeof AdmissionApplicationsIdRoute
@@ -566,7 +645,7 @@ export interface FileRoutesById {
   '/admin': typeof AdminRouteWithChildren
   '/admission': typeof AdmissionRouteWithChildren
   '/directors': typeof DirectorsRouteWithChildren
-  '/finance': typeof FinanceRoute
+  '/finance': typeof FinanceRouteWithChildren
   '/hr': typeof HrRoute
   '/marketing': typeof MarketingRoute
   '/settings': typeof SettingsRoute
@@ -612,10 +691,20 @@ export interface FileRoutesById {
   '/directors/reports': typeof DirectorsReportsRoute
   '/directors/settings': typeof DirectorsSettingsRoute
   '/directors/tasks': typeof DirectorsTasksRoute
+  '/finance/allocation': typeof FinanceAllocationRoute
+  '/finance/budgets': typeof FinanceBudgetsRoute
+  '/finance/fees': typeof FinanceFeesRoute
+  '/finance/ledgers': typeof FinanceLedgersRoute
+  '/finance/petty-cash': typeof FinancePettyCashRoute
+  '/finance/reports': typeof FinanceReportsRoute
+  '/finance/settings': typeof FinanceSettingsRoute
+  '/finance/settlements': typeof FinanceSettlementsRoute
+  '/finance/transactions': typeof FinanceTransactionsRoute
   '/academic/': typeof AcademicIndexRoute
   '/admin/': typeof AdminIndexRoute
   '/admission/': typeof AdmissionIndexRoute
   '/directors/': typeof DirectorsIndexRoute
+  '/finance/': typeof FinanceIndexRoute
   '/academic/notes/$moduleId': typeof AcademicNotesModuleIdRoute
   '/admission/agents/$id': typeof AdmissionAgentsIdRoute
   '/admission/applications/$id': typeof AdmissionApplicationsIdRoute
@@ -684,10 +773,20 @@ export interface FileRouteTypes {
     | '/directors/reports'
     | '/directors/settings'
     | '/directors/tasks'
+    | '/finance/allocation'
+    | '/finance/budgets'
+    | '/finance/fees'
+    | '/finance/ledgers'
+    | '/finance/petty-cash'
+    | '/finance/reports'
+    | '/finance/settings'
+    | '/finance/settlements'
+    | '/finance/transactions'
     | '/academic/'
     | '/admin/'
     | '/admission/'
     | '/directors/'
+    | '/finance/'
     | '/academic/notes/$moduleId'
     | '/admission/agents/$id'
     | '/admission/applications/$id'
@@ -704,7 +803,6 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/finance'
     | '/hr'
     | '/marketing'
     | '/settings'
@@ -747,10 +845,20 @@ export interface FileRouteTypes {
     | '/directors/reports'
     | '/directors/settings'
     | '/directors/tasks'
+    | '/finance/allocation'
+    | '/finance/budgets'
+    | '/finance/fees'
+    | '/finance/ledgers'
+    | '/finance/petty-cash'
+    | '/finance/reports'
+    | '/finance/settings'
+    | '/finance/settlements'
+    | '/finance/transactions'
     | '/academic'
     | '/admin'
     | '/admission'
     | '/directors'
+    | '/finance'
     | '/academic/notes/$moduleId'
     | '/admission/agents/$id'
     | '/admission/applications/$id'
@@ -817,10 +925,20 @@ export interface FileRouteTypes {
     | '/directors/reports'
     | '/directors/settings'
     | '/directors/tasks'
+    | '/finance/allocation'
+    | '/finance/budgets'
+    | '/finance/fees'
+    | '/finance/ledgers'
+    | '/finance/petty-cash'
+    | '/finance/reports'
+    | '/finance/settings'
+    | '/finance/settlements'
+    | '/finance/transactions'
     | '/academic/'
     | '/admin/'
     | '/admission/'
     | '/directors/'
+    | '/finance/'
     | '/academic/notes/$moduleId'
     | '/admission/agents/$id'
     | '/admission/applications/$id'
@@ -842,7 +960,7 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRouteWithChildren
   AdmissionRoute: typeof AdmissionRouteWithChildren
   DirectorsRoute: typeof DirectorsRouteWithChildren
-  FinanceRoute: typeof FinanceRoute
+  FinanceRoute: typeof FinanceRouteWithChildren
   HrRoute: typeof HrRoute
   MarketingRoute: typeof MarketingRoute
   SettingsRoute: typeof SettingsRoute
@@ -1237,6 +1355,76 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DirectorsTasksRouteImport
       parentRoute: typeof DirectorsRoute
     }
+    '/finance/': {
+      id: '/finance/'
+      path: '/'
+      fullPath: '/finance/'
+      preLoaderRoute: typeof FinanceIndexRouteImport
+      parentRoute: typeof FinanceRoute
+    }
+    '/finance/allocation': {
+      id: '/finance/allocation'
+      path: '/allocation'
+      fullPath: '/finance/allocation'
+      preLoaderRoute: typeof FinanceAllocationRouteImport
+      parentRoute: typeof FinanceRoute
+    }
+    '/finance/budgets': {
+      id: '/finance/budgets'
+      path: '/budgets'
+      fullPath: '/finance/budgets'
+      preLoaderRoute: typeof FinanceBudgetsRouteImport
+      parentRoute: typeof FinanceRoute
+    }
+    '/finance/fees': {
+      id: '/finance/fees'
+      path: '/fees'
+      fullPath: '/finance/fees'
+      preLoaderRoute: typeof FinanceFeesRouteImport
+      parentRoute: typeof FinanceRoute
+    }
+    '/finance/ledgers': {
+      id: '/finance/ledgers'
+      path: '/ledgers'
+      fullPath: '/finance/ledgers'
+      preLoaderRoute: typeof FinanceLedgersRouteImport
+      parentRoute: typeof FinanceRoute
+    }
+    '/finance/petty-cash': {
+      id: '/finance/petty-cash'
+      path: '/petty-cash'
+      fullPath: '/finance/petty-cash'
+      preLoaderRoute: typeof FinancePettyCashRouteImport
+      parentRoute: typeof FinanceRoute
+    }
+    '/finance/reports': {
+      id: '/finance/reports'
+      path: '/reports'
+      fullPath: '/finance/reports'
+      preLoaderRoute: typeof FinanceReportsRouteImport
+      parentRoute: typeof FinanceRoute
+    }
+    '/finance/settings': {
+      id: '/finance/settings'
+      path: '/settings'
+      fullPath: '/finance/settings'
+      preLoaderRoute: typeof FinanceSettingsRouteImport
+      parentRoute: typeof FinanceRoute
+    }
+    '/finance/settlements': {
+      id: '/finance/settlements'
+      path: '/settlements'
+      fullPath: '/finance/settlements'
+      preLoaderRoute: typeof FinanceSettlementsRouteImport
+      parentRoute: typeof FinanceRoute
+    }
+    '/finance/transactions': {
+      id: '/finance/transactions'
+      path: '/transactions'
+      fullPath: '/finance/transactions'
+      preLoaderRoute: typeof FinanceTransactionsRouteImport
+      parentRoute: typeof FinanceRoute
+    }
     '/academic/notes/': {
       id: '/academic/notes/'
       path: '/'
@@ -1523,13 +1711,42 @@ const DirectorsRouteWithChildren = DirectorsRoute._addFileChildren(
   DirectorsRouteChildren,
 )
 
+interface FinanceRouteChildren {
+  FinanceAllocationRoute: typeof FinanceAllocationRoute
+  FinanceBudgetsRoute: typeof FinanceBudgetsRoute
+  FinanceFeesRoute: typeof FinanceFeesRoute
+  FinanceLedgersRoute: typeof FinanceLedgersRoute
+  FinancePettyCashRoute: typeof FinancePettyCashRoute
+  FinanceReportsRoute: typeof FinanceReportsRoute
+  FinanceSettingsRoute: typeof FinanceSettingsRoute
+  FinanceSettlementsRoute: typeof FinanceSettlementsRoute
+  FinanceTransactionsRoute: typeof FinanceTransactionsRoute
+  FinanceIndexRoute: typeof FinanceIndexRoute
+}
+
+const FinanceRouteChildren: FinanceRouteChildren = {
+  FinanceAllocationRoute: FinanceAllocationRoute,
+  FinanceBudgetsRoute: FinanceBudgetsRoute,
+  FinanceFeesRoute: FinanceFeesRoute,
+  FinanceLedgersRoute: FinanceLedgersRoute,
+  FinancePettyCashRoute: FinancePettyCashRoute,
+  FinanceReportsRoute: FinanceReportsRoute,
+  FinanceSettingsRoute: FinanceSettingsRoute,
+  FinanceSettlementsRoute: FinanceSettlementsRoute,
+  FinanceTransactionsRoute: FinanceTransactionsRoute,
+  FinanceIndexRoute: FinanceIndexRoute,
+}
+
+const FinanceRouteWithChildren =
+  FinanceRoute._addFileChildren(FinanceRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AcademicRoute: AcademicRouteWithChildren,
   AdminRoute: AdminRouteWithChildren,
   AdmissionRoute: AdmissionRouteWithChildren,
   DirectorsRoute: DirectorsRouteWithChildren,
-  FinanceRoute: FinanceRoute,
+  FinanceRoute: FinanceRouteWithChildren,
   HrRoute: HrRoute,
   MarketingRoute: MarketingRoute,
   SettingsRoute: SettingsRoute,
