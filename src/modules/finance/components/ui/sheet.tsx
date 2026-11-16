@@ -6,6 +6,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { X } from "lucide-react";
 
 import { cn } from "@/modules/finance/lib/utils";
+import { useFinancePortalRoot } from "./finance-portal";
 
 const Sheet = SheetPrimitive.Root;
 
@@ -13,7 +14,10 @@ const SheetTrigger = SheetPrimitive.Trigger;
 
 const SheetClose = SheetPrimitive.Close;
 
-const SheetPortal = SheetPrimitive.Portal;
+const SheetPortal = (props: React.ComponentProps<typeof SheetPrimitive.Portal>) => {
+  const container = useFinancePortalRoot();
+  return <SheetPrimitive.Portal container={container} {...props} />;
+};
 
 const SheetOverlay = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Overlay>,

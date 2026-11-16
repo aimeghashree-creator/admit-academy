@@ -2,6 +2,7 @@ import * as React from "react";
 import { Drawer as DrawerPrimitive } from "vaul";
 
 import { cn } from "@/modules/finance/lib/utils";
+import { useFinancePortalRoot } from "./finance-portal";
 
 const Drawer = ({
   shouldScaleBackground = true,
@@ -13,7 +14,10 @@ Drawer.displayName = "Drawer";
 
 const DrawerTrigger = DrawerPrimitive.Trigger;
 
-const DrawerPortal = DrawerPrimitive.Portal;
+const DrawerPortal = (props: React.ComponentProps<typeof DrawerPrimitive.Portal>) => {
+  const container = useFinancePortalRoot();
+  return <DrawerPrimitive.Portal container={container} {...props} />;
+};
 
 const DrawerClose = DrawerPrimitive.Close;
 

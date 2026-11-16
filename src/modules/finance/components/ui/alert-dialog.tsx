@@ -2,13 +2,17 @@ import * as React from "react";
 import * as AlertDialogPrimitive from "@radix-ui/react-alert-dialog";
 
 import { cn } from "@/modules/finance/lib/utils";
+import { useFinancePortalRoot } from "./finance-portal";
 import { buttonVariants } from "@/modules/finance/components/ui/button";
 
 const AlertDialog = AlertDialogPrimitive.Root;
 
 const AlertDialogTrigger = AlertDialogPrimitive.Trigger;
 
-const AlertDialogPortal = AlertDialogPrimitive.Portal;
+const AlertDialogPortal = (props: React.ComponentProps<typeof AlertDialogPrimitive.Portal>) => {
+  const container = useFinancePortalRoot();
+  return <AlertDialogPrimitive.Portal container={container} {...props} />;
+};
 
 const AlertDialogOverlay = React.forwardRef<
   React.ElementRef<typeof AlertDialogPrimitive.Overlay>,

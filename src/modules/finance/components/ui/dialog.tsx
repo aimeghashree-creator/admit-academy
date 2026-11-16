@@ -5,12 +5,16 @@ import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
 
 import { cn } from "@/modules/finance/lib/utils";
+import { useFinancePortalRoot } from "./finance-portal";
 
 const Dialog = DialogPrimitive.Root;
 
 const DialogTrigger = DialogPrimitive.Trigger;
 
-const DialogPortal = DialogPrimitive.Portal;
+const DialogPortal = (props: React.ComponentProps<typeof DialogPrimitive.Portal>) => {
+  const container = useFinancePortalRoot();
+  return <DialogPrimitive.Portal container={container} {...props} />;
+};
 
 const DialogClose = DialogPrimitive.Close;
 
