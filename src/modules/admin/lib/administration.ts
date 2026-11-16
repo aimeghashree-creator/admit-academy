@@ -76,7 +76,7 @@ export function academicTopicTotal(
   technicalViva?: unknown,
   project?: unknown,
 ): number {
-  return [practical, theory, industrialViva, technicalViva, project].reduce(
+  return [practical, theory, industrialViva, technicalViva, project].reduce<number>(
     (total, mark) =>
       total + (mark === "" || mark === null || mark === undefined ? 0 : Number(mark)),
     0,
