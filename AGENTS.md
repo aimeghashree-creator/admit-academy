@@ -30,4 +30,8 @@ use the editor.
 <!-- LOVABLE:END -->
 
 ## Project rules
+- Academic trainer portal lives in `src/modules/academic`, routes `src/routes/academic.*.tsx`, CSS scoped under `.academic-module`, saved state loaded after hydration.
+- Finance lives in `src/modules/finance`, with routes `src/routes/finance.*.tsx` and CSS scoped under `.finance-module`.
+- Admin lives in `src/modules/admin`, with routes `src/routes/admin.*.tsx` and CSS scoped under `.admin-module`.
 - App data (admissions, leads, HR, marketing state) persists in browser localStorage via `src/lib/local-app-state.ts`, an `app_state`-shaped shim; swap that module for a real table if shared multi-device data is needed, since callers already use the table-style API.
+- tsconfig keeps noUncheckedIndexedAccess, noPropertyAccessFromIndexSignature and exactOptionalPropertyTypes off because the embedded Admin/Finance/Academic apps were written without them.
