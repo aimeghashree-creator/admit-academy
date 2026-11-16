@@ -485,8 +485,8 @@ function Attendance() {
                           </>,
                           "Project",
                           "Total Mark",
-                        ].map((heading) => (
-                          <th key={heading} className="px-2 py-2 font-medium">
+                        ].map((heading, headingIndex) => (
+                          <th key={typeof heading === "string" ? heading : `heading-${headingIndex}`} className="px-2 py-2 font-medium">
                             {heading}
                           </th>
                         ))}
