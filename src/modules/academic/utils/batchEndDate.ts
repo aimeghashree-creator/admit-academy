@@ -57,6 +57,7 @@ export function calculateBatchEndDate(
     if (sessionsRemaining === 0) return toLocalDateISO(date);
     date.setDate(date.getDate() + 1);
   }
+  return undefined;
 }
 
 export function getBatchEndDate(

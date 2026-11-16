@@ -366,7 +366,7 @@ export const Dashboard: React.FC = () => {
                 title="No Batches Scheduled Today"
                 description={`You have no assigned academic batches scheduled on ${activeDayName}. You may use this time for admin-assigned tasks or curriculum preparation.`}
                 actionText="Browse Upcoming Schedule"
-                onAction={() => navigate({ to: '/academic/schedule' })}
+                onAction={() => { void navigate({ to: '/academic/schedule' }); }}
               />
             ) : (
               <div className="space-y-2">
