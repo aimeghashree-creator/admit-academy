@@ -1,6 +1,9 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+@import "./modules/admin/admin.css";
+@import "./modules/finance/finance.css";
+@import "./modules/academic/academic.css";
 
 @custom-variant dark (&:is(.dark *));
 
