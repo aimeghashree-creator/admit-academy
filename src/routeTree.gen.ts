@@ -19,6 +19,15 @@ import { Route as HrRouteImport } from './routes/hr'
 import { Route as MarketingRouteImport } from './routes/marketing'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as WorkspaceRouteImport } from './routes/workspace'
+import { Route as AcademicIndexRouteImport } from './routes/academic.index'
+import { Route as AcademicAttendanceRouteImport } from './routes/academic.attendance'
+import { Route as AcademicExaminationsRouteImport } from './routes/academic.examinations'
+import { Route as AcademicHistoryRouteImport } from './routes/academic.history'
+import { Route as AcademicNotesRouteImport } from './routes/academic.notes'
+import { Route as AcademicNotificationsRouteImport } from './routes/academic.notifications'
+import { Route as AcademicProfileRouteImport } from './routes/academic.profile'
+import { Route as AcademicScheduleRouteImport } from './routes/academic.schedule'
+import { Route as AcademicSyllabusRouteImport } from './routes/academic.syllabus'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as AdminAbsenceRouteImport } from './routes/admin.absence'
 import { Route as AdminAdmissionsRouteImport } from './routes/admin.admissions'
@@ -55,6 +64,8 @@ import { Route as DirectorsProfileRouteImport } from './routes/directors.profile
 import { Route as DirectorsReportsRouteImport } from './routes/directors.reports'
 import { Route as DirectorsSettingsRouteImport } from './routes/directors.settings'
 import { Route as DirectorsTasksRouteImport } from './routes/directors.tasks'
+import { Route as AcademicNotesIndexRouteImport } from './routes/academic.notes.index'
+import { Route as AcademicNotesModuleIdRouteImport } from './routes/academic.notes.$moduleId'
 import { Route as AdmissionAgentsIndexRouteImport } from './routes/admission.agents.index'
 import { Route as AdmissionAgentsIdRouteImport } from './routes/admission.agents.$id'
 import { Route as AdmissionApplicationsIdRouteImport } from './routes/admission.applications.$id'
@@ -116,6 +127,51 @@ const WorkspaceRoute = WorkspaceRouteImport.update({
   id: '/workspace',
   path: '/workspace',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AcademicIndexRoute = AcademicIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AcademicRoute,
+} as any)
+const AcademicAttendanceRoute = AcademicAttendanceRouteImport.update({
+  id: '/attendance',
+  path: '/attendance',
+  getParentRoute: () => AcademicRoute,
+} as any)
+const AcademicExaminationsRoute = AcademicExaminationsRouteImport.update({
+  id: '/examinations',
+  path: '/examinations',
+  getParentRoute: () => AcademicRoute,
+} as any)
+const AcademicHistoryRoute = AcademicHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => AcademicRoute,
+} as any)
+const AcademicNotesRoute = AcademicNotesRouteImport.update({
+  id: '/notes',
+  path: '/notes',
+  getParentRoute: () => AcademicRoute,
+} as any)
+const AcademicNotificationsRoute = AcademicNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => AcademicRoute,
+} as any)
+const AcademicProfileRoute = AcademicProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AcademicRoute,
+} as any)
+const AcademicScheduleRoute = AcademicScheduleRouteImport.update({
+  id: '/schedule',
+  path: '/schedule',
+  getParentRoute: () => AcademicRoute,
+} as any)
+const AcademicSyllabusRoute = AcademicSyllabusRouteImport.update({
+  id: '/syllabus',
+  path: '/syllabus',
+  getParentRoute: () => AcademicRoute,
 } as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/',
@@ -298,6 +354,16 @@ const DirectorsTasksRoute = DirectorsTasksRouteImport.update({
   path: '/tasks',
   getParentRoute: () => DirectorsRoute,
 } as any)
+const AcademicNotesIndexRoute = AcademicNotesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AcademicNotesRoute,
+} as any)
+const AcademicNotesModuleIdRoute = AcademicNotesModuleIdRouteImport.update({
+  id: '/$moduleId',
+  path: '/$moduleId',
+  getParentRoute: () => AcademicNotesRoute,
+} as any)
 const AdmissionAgentsIndexRoute = AdmissionAgentsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -362,7 +428,7 @@ const DirectorsSkillaiSplatRoute = DirectorsSkillaiSplatRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/academic': typeof AcademicRoute
+  '/academic': typeof AcademicRouteWithChildren
   '/admin': typeof AdminRouteWithChildren
   '/admission': typeof AdmissionRouteWithChildren
   '/directors': typeof DirectorsRouteWithChildren
@@ -371,6 +437,14 @@ export interface FileRoutesByFullPath {
   '/marketing': typeof MarketingRoute
   '/settings': typeof SettingsRoute
   '/workspace': typeof WorkspaceRoute
+  '/academic/attendance': typeof AcademicAttendanceRoute
+  '/academic/examinations': typeof AcademicExaminationsRoute
+  '/academic/history': typeof AcademicHistoryRoute
+  '/academic/notes': typeof AcademicNotesRouteWithChildren
+  '/academic/notifications': typeof AcademicNotificationsRoute
+  '/academic/profile': typeof AcademicProfileRoute
+  '/academic/schedule': typeof AcademicScheduleRoute
+  '/academic/syllabus': typeof AcademicSyllabusRoute
   '/admin/absence': typeof AdminAbsenceRoute
   '/admin/admissions': typeof AdminAdmissionsRoute
   '/admin/attendance': typeof AdminAttendanceRoute
@@ -404,9 +478,11 @@ export interface FileRoutesByFullPath {
   '/directors/reports': typeof DirectorsReportsRoute
   '/directors/settings': typeof DirectorsSettingsRoute
   '/directors/tasks': typeof DirectorsTasksRoute
+  '/academic/': typeof AcademicIndexRoute
   '/admin/': typeof AdminIndexRoute
   '/admission/': typeof AdmissionIndexRoute
   '/directors/': typeof DirectorsIndexRoute
+  '/academic/notes/$moduleId': typeof AcademicNotesModuleIdRoute
   '/admission/agents/$id': typeof AdmissionAgentsIdRoute
   '/admission/applications/$id': typeof AdmissionApplicationsIdRoute
   '/admission/call-center/agents': typeof AdmissionCallCenterAgentsRoute
@@ -415,18 +491,25 @@ export interface FileRoutesByFullPath {
   '/admission/call-center/reports': typeof AdmissionCallCenterReportsRoute
   '/admission/call-center/upload': typeof AdmissionCallCenterUploadRoute
   '/directors/skillai/$': typeof DirectorsSkillaiSplatRoute
+  '/academic/notes/': typeof AcademicNotesIndexRoute
   '/admission/agents/': typeof AdmissionAgentsIndexRoute
   '/admission/call-center/': typeof AdmissionCallCenterIndexRoute
   '/directors/skillai/': typeof DirectorsSkillaiIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/academic': typeof AcademicRoute
   '/finance': typeof FinanceRoute
   '/hr': typeof HrRoute
   '/marketing': typeof MarketingRoute
   '/settings': typeof SettingsRoute
   '/workspace': typeof WorkspaceRoute
+  '/academic/attendance': typeof AcademicAttendanceRoute
+  '/academic/examinations': typeof AcademicExaminationsRoute
+  '/academic/history': typeof AcademicHistoryRoute
+  '/academic/notifications': typeof AcademicNotificationsRoute
+  '/academic/profile': typeof AcademicProfileRoute
+  '/academic/schedule': typeof AcademicScheduleRoute
+  '/academic/syllabus': typeof AcademicSyllabusRoute
   '/admin/absence': typeof AdminAbsenceRoute
   '/admin/admissions': typeof AdminAdmissionsRoute
   '/admin/attendance': typeof AdminAttendanceRoute
@@ -458,9 +541,11 @@ export interface FileRoutesByTo {
   '/directors/reports': typeof DirectorsReportsRoute
   '/directors/settings': typeof DirectorsSettingsRoute
   '/directors/tasks': typeof DirectorsTasksRoute
+  '/academic': typeof AcademicIndexRoute
   '/admin': typeof AdminIndexRoute
   '/admission': typeof AdmissionIndexRoute
   '/directors': typeof DirectorsIndexRoute
+  '/academic/notes/$moduleId': typeof AcademicNotesModuleIdRoute
   '/admission/agents/$id': typeof AdmissionAgentsIdRoute
   '/admission/applications/$id': typeof AdmissionApplicationsIdRoute
   '/admission/call-center/agents': typeof AdmissionCallCenterAgentsRoute
@@ -469,6 +554,7 @@ export interface FileRoutesByTo {
   '/admission/call-center/reports': typeof AdmissionCallCenterReportsRoute
   '/admission/call-center/upload': typeof AdmissionCallCenterUploadRoute
   '/directors/skillai/$': typeof DirectorsSkillaiSplatRoute
+  '/academic/notes': typeof AcademicNotesIndexRoute
   '/admission/agents': typeof AdmissionAgentsIndexRoute
   '/admission/call-center': typeof AdmissionCallCenterIndexRoute
   '/directors/skillai': typeof DirectorsSkillaiIndexRoute
@@ -476,7 +562,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/academic': typeof AcademicRoute
+  '/academic': typeof AcademicRouteWithChildren
   '/admin': typeof AdminRouteWithChildren
   '/admission': typeof AdmissionRouteWithChildren
   '/directors': typeof DirectorsRouteWithChildren
@@ -485,6 +571,14 @@ export interface FileRoutesById {
   '/marketing': typeof MarketingRoute
   '/settings': typeof SettingsRoute
   '/workspace': typeof WorkspaceRoute
+  '/academic/attendance': typeof AcademicAttendanceRoute
+  '/academic/examinations': typeof AcademicExaminationsRoute
+  '/academic/history': typeof AcademicHistoryRoute
+  '/academic/notes': typeof AcademicNotesRouteWithChildren
+  '/academic/notifications': typeof AcademicNotificationsRoute
+  '/academic/profile': typeof AcademicProfileRoute
+  '/academic/schedule': typeof AcademicScheduleRoute
+  '/academic/syllabus': typeof AcademicSyllabusRoute
   '/admin/absence': typeof AdminAbsenceRoute
   '/admin/admissions': typeof AdminAdmissionsRoute
   '/admin/attendance': typeof AdminAttendanceRoute
@@ -518,9 +612,11 @@ export interface FileRoutesById {
   '/directors/reports': typeof DirectorsReportsRoute
   '/directors/settings': typeof DirectorsSettingsRoute
   '/directors/tasks': typeof DirectorsTasksRoute
+  '/academic/': typeof AcademicIndexRoute
   '/admin/': typeof AdminIndexRoute
   '/admission/': typeof AdmissionIndexRoute
   '/directors/': typeof DirectorsIndexRoute
+  '/academic/notes/$moduleId': typeof AcademicNotesModuleIdRoute
   '/admission/agents/$id': typeof AdmissionAgentsIdRoute
   '/admission/applications/$id': typeof AdmissionApplicationsIdRoute
   '/admission/call-center/agents': typeof AdmissionCallCenterAgentsRoute
@@ -529,6 +625,7 @@ export interface FileRoutesById {
   '/admission/call-center/reports': typeof AdmissionCallCenterReportsRoute
   '/admission/call-center/upload': typeof AdmissionCallCenterUploadRoute
   '/directors/skillai/$': typeof DirectorsSkillaiSplatRoute
+  '/academic/notes/': typeof AcademicNotesIndexRoute
   '/admission/agents/': typeof AdmissionAgentsIndexRoute
   '/admission/call-center/': typeof AdmissionCallCenterIndexRoute
   '/directors/skillai/': typeof DirectorsSkillaiIndexRoute
@@ -546,6 +643,14 @@ export interface FileRouteTypes {
     | '/marketing'
     | '/settings'
     | '/workspace'
+    | '/academic/attendance'
+    | '/academic/examinations'
+    | '/academic/history'
+    | '/academic/notes'
+    | '/academic/notifications'
+    | '/academic/profile'
+    | '/academic/schedule'
+    | '/academic/syllabus'
     | '/admin/absence'
     | '/admin/admissions'
     | '/admin/attendance'
@@ -579,9 +684,11 @@ export interface FileRouteTypes {
     | '/directors/reports'
     | '/directors/settings'
     | '/directors/tasks'
+    | '/academic/'
     | '/admin/'
     | '/admission/'
     | '/directors/'
+    | '/academic/notes/$moduleId'
     | '/admission/agents/$id'
     | '/admission/applications/$id'
     | '/admission/call-center/agents'
@@ -590,18 +697,25 @@ export interface FileRouteTypes {
     | '/admission/call-center/reports'
     | '/admission/call-center/upload'
     | '/directors/skillai/$'
+    | '/academic/notes/'
     | '/admission/agents/'
     | '/admission/call-center/'
     | '/directors/skillai/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/academic'
     | '/finance'
     | '/hr'
     | '/marketing'
     | '/settings'
     | '/workspace'
+    | '/academic/attendance'
+    | '/academic/examinations'
+    | '/academic/history'
+    | '/academic/notifications'
+    | '/academic/profile'
+    | '/academic/schedule'
+    | '/academic/syllabus'
     | '/admin/absence'
     | '/admin/admissions'
     | '/admin/attendance'
@@ -633,9 +747,11 @@ export interface FileRouteTypes {
     | '/directors/reports'
     | '/directors/settings'
     | '/directors/tasks'
+    | '/academic'
     | '/admin'
     | '/admission'
     | '/directors'
+    | '/academic/notes/$moduleId'
     | '/admission/agents/$id'
     | '/admission/applications/$id'
     | '/admission/call-center/agents'
@@ -644,6 +760,7 @@ export interface FileRouteTypes {
     | '/admission/call-center/reports'
     | '/admission/call-center/upload'
     | '/directors/skillai/$'
+    | '/academic/notes'
     | '/admission/agents'
     | '/admission/call-center'
     | '/directors/skillai'
@@ -659,6 +776,14 @@ export interface FileRouteTypes {
     | '/marketing'
     | '/settings'
     | '/workspace'
+    | '/academic/attendance'
+    | '/academic/examinations'
+    | '/academic/history'
+    | '/academic/notes'
+    | '/academic/notifications'
+    | '/academic/profile'
+    | '/academic/schedule'
+    | '/academic/syllabus'
     | '/admin/absence'
     | '/admin/admissions'
     | '/admin/attendance'
@@ -692,9 +817,11 @@ export interface FileRouteTypes {
     | '/directors/reports'
     | '/directors/settings'
     | '/directors/tasks'
+    | '/academic/'
     | '/admin/'
     | '/admission/'
     | '/directors/'
+    | '/academic/notes/$moduleId'
     | '/admission/agents/$id'
     | '/admission/applications/$id'
     | '/admission/call-center/agents'
@@ -703,6 +830,7 @@ export interface FileRouteTypes {
     | '/admission/call-center/reports'
     | '/admission/call-center/upload'
     | '/directors/skillai/$'
+    | '/academic/notes/'
     | '/admission/agents/'
     | '/admission/call-center/'
     | '/directors/skillai/'
@@ -710,7 +838,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AcademicRoute: typeof AcademicRoute
+  AcademicRoute: typeof AcademicRouteWithChildren
   AdminRoute: typeof AdminRouteWithChildren
   AdmissionRoute: typeof AdmissionRouteWithChildren
   DirectorsRoute: typeof DirectorsRouteWithChildren
@@ -793,6 +921,69 @@ declare module '@tanstack/react-router' {
       fullPath: '/workspace'
       preLoaderRoute: typeof WorkspaceRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/academic/': {
+      id: '/academic/'
+      path: '/'
+      fullPath: '/academic/'
+      preLoaderRoute: typeof AcademicIndexRouteImport
+      parentRoute: typeof AcademicRoute
+    }
+    '/academic/attendance': {
+      id: '/academic/attendance'
+      path: '/attendance'
+      fullPath: '/academic/attendance'
+      preLoaderRoute: typeof AcademicAttendanceRouteImport
+      parentRoute: typeof AcademicRoute
+    }
+    '/academic/examinations': {
+      id: '/academic/examinations'
+      path: '/examinations'
+      fullPath: '/academic/examinations'
+      preLoaderRoute: typeof AcademicExaminationsRouteImport
+      parentRoute: typeof AcademicRoute
+    }
+    '/academic/history': {
+      id: '/academic/history'
+      path: '/history'
+      fullPath: '/academic/history'
+      preLoaderRoute: typeof AcademicHistoryRouteImport
+      parentRoute: typeof AcademicRoute
+    }
+    '/academic/notes': {
+      id: '/academic/notes'
+      path: '/notes'
+      fullPath: '/academic/notes'
+      preLoaderRoute: typeof AcademicNotesRouteImport
+      parentRoute: typeof AcademicRoute
+    }
+    '/academic/notifications': {
+      id: '/academic/notifications'
+      path: '/notifications'
+      fullPath: '/academic/notifications'
+      preLoaderRoute: typeof AcademicNotificationsRouteImport
+      parentRoute: typeof AcademicRoute
+    }
+    '/academic/profile': {
+      id: '/academic/profile'
+      path: '/profile'
+      fullPath: '/academic/profile'
+      preLoaderRoute: typeof AcademicProfileRouteImport
+      parentRoute: typeof AcademicRoute
+    }
+    '/academic/schedule': {
+      id: '/academic/schedule'
+      path: '/schedule'
+      fullPath: '/academic/schedule'
+      preLoaderRoute: typeof AcademicScheduleRouteImport
+      parentRoute: typeof AcademicRoute
+    }
+    '/academic/syllabus': {
+      id: '/academic/syllabus'
+      path: '/syllabus'
+      fullPath: '/academic/syllabus'
+      preLoaderRoute: typeof AcademicSyllabusRouteImport
+      parentRoute: typeof AcademicRoute
     }
     '/admin/': {
       id: '/admin/'
@@ -1046,6 +1237,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DirectorsTasksRouteImport
       parentRoute: typeof DirectorsRoute
     }
+    '/academic/notes/': {
+      id: '/academic/notes/'
+      path: '/'
+      fullPath: '/academic/notes/'
+      preLoaderRoute: typeof AcademicNotesIndexRouteImport
+      parentRoute: typeof AcademicNotesRoute
+    }
+    '/academic/notes/$moduleId': {
+      id: '/academic/notes/$moduleId'
+      path: '/$moduleId'
+      fullPath: '/academic/notes/$moduleId'
+      preLoaderRoute: typeof AcademicNotesModuleIdRouteImport
+      parentRoute: typeof AcademicNotesRoute
+    }
     '/admission/agents/': {
       id: '/admission/agents/'
       path: '/'
@@ -1125,6 +1330,48 @@ declare module '@tanstack/react-router' {
     }
   }
 }
+
+interface AcademicNotesRouteChildren {
+  AcademicNotesModuleIdRoute: typeof AcademicNotesModuleIdRoute
+  AcademicNotesIndexRoute: typeof AcademicNotesIndexRoute
+}
+
+const AcademicNotesRouteChildren: AcademicNotesRouteChildren = {
+  AcademicNotesModuleIdRoute: AcademicNotesModuleIdRoute,
+  AcademicNotesIndexRoute: AcademicNotesIndexRoute,
+}
+
+const AcademicNotesRouteWithChildren = AcademicNotesRoute._addFileChildren(
+  AcademicNotesRouteChildren,
+)
+
+interface AcademicRouteChildren {
+  AcademicAttendanceRoute: typeof AcademicAttendanceRoute
+  AcademicExaminationsRoute: typeof AcademicExaminationsRoute
+  AcademicHistoryRoute: typeof AcademicHistoryRoute
+  AcademicNotesRoute: typeof AcademicNotesRouteWithChildren
+  AcademicNotificationsRoute: typeof AcademicNotificationsRoute
+  AcademicProfileRoute: typeof AcademicProfileRoute
+  AcademicScheduleRoute: typeof AcademicScheduleRoute
+  AcademicSyllabusRoute: typeof AcademicSyllabusRoute
+  AcademicIndexRoute: typeof AcademicIndexRoute
+}
+
+const AcademicRouteChildren: AcademicRouteChildren = {
+  AcademicAttendanceRoute: AcademicAttendanceRoute,
+  AcademicExaminationsRoute: AcademicExaminationsRoute,
+  AcademicHistoryRoute: AcademicHistoryRoute,
+  AcademicNotesRoute: AcademicNotesRouteWithChildren,
+  AcademicNotificationsRoute: AcademicNotificationsRoute,
+  AcademicProfileRoute: AcademicProfileRoute,
+  AcademicScheduleRoute: AcademicScheduleRoute,
+  AcademicSyllabusRoute: AcademicSyllabusRoute,
+  AcademicIndexRoute: AcademicIndexRoute,
+}
+
+const AcademicRouteWithChildren = AcademicRoute._addFileChildren(
+  AcademicRouteChildren,
+)
 
 interface AdminRouteChildren {
   AdminAbsenceRoute: typeof AdminAbsenceRoute
@@ -1278,7 +1525,7 @@ const DirectorsRouteWithChildren = DirectorsRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AcademicRoute: AcademicRoute,
+  AcademicRoute: AcademicRouteWithChildren,
   AdminRoute: AdminRouteWithChildren,
   AdmissionRoute: AdmissionRouteWithChildren,
   DirectorsRoute: DirectorsRouteWithChildren,
