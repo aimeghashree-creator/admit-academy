@@ -193,7 +193,7 @@ function Attendance() {
   const savedTopics = selectedStudent
     ? topics.rows.filter((topic) => topic.regNo === selectedStudent.regNo)
     : [];
-  const selectedTopics = selectedStudent
+  const selectedTopics: Row[] = selectedStudent
     ? [
         ...SAMPLE_ACADEMIC_TOPICS.filter(
           (sample) => !savedTopics.some((topic) => topic.demoKey === sample.key),
@@ -241,7 +241,7 @@ function Attendance() {
       ?.trim()
       .split(/\s+/)
       .filter(Boolean)
-      .filter((_, index, parts) => index === 0 || index === parts.length - 1)
+      .filter((_: string, index: number, parts: string[]) => index === 0 || index === parts.length - 1)
       .map((part: string) => part[0])
       .join("")
       .toUpperCase() ?? "";
