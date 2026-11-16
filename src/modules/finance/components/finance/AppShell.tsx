@@ -264,7 +264,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             variant="ghost"
             size="icon"
             className="app-shell-menu-toggle pointer-events-auto mr-3 h-12 w-12 rounded-full"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-label={menuOpen ? "Close finance menu" : "Open finance menu"}
             aria-expanded={menuOpen}
             onClick={() => handleOpenChange(!menuOpen)}
           >
